@@ -75,6 +75,10 @@ message Node {
 	// shows the privilege level that the CA would currently grant when
 	// issuing or renewing the node's certificate.
 	NodeRole role = 9;
+
+	// LBAttachments carry per-network node attachment required for
+	// optimally placed distributed load-balancers.
+	map<string, NetworkAttachment> lb_attachments = 10;
 }
 
 message Service {
@@ -257,7 +261,7 @@ message NetworkAttachment {
 
 	// List of aliases by which a task is resolved in a network
 	repeated string aliases = 3;
-	
+
 	// Map of all the driver attachment options for this network
 	map<string,string> driver_attachment_opts = 4;
 }
